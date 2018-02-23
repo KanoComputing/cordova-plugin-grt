@@ -1,0 +1,15 @@
+{
+  "name": "cordova-plugin-grt",
+  "version": "1.0.0",
+  "description": "This plugin allows you to use the GRT library through cordova",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^3.0.0",
+    "mkdirp": "^0.5.1"
+  }
+}

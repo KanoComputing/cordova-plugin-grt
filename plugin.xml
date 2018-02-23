@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" id="cordova-plugin-grt" version="1.0.0">
+  <engines>
+    <engine name="cordova-plugman" version=">=5.0.0" />
+    <engine name="cordova-android" version=">=5.0.0" />
+  </engines>
+  <name>GRT</name>
+  <description>Use the GRT plugin to use machine learning powered gesture recognitions in your cordova app</description>
+  <author>Kano Computing</author>
+  <keywords>grt,machine learning,gesture,cordova</keywords>
+  <license>MIT</license>
+  <js-module src="www/grt.js" name="GRT">
+    <clobbers target="window.grt" />
+  </js-module>
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="GRTPlugin">
+        <param name="android-package" value="com.kano.grt.GRTPlugin" />
+      </feature>
+    </config-file>
+    <source-file src="src/android/com/kano/grt/GRTPlugin.java" target-dir="src/com/kano/grt" />
+    <source-file src="src/android/com/kano/grt/GRTAction.java" target-dir="src/com/kano/grt" />
+    <source-file src="src/android/com/kano/grt/TSCDWrapper.java" target-dir="src/com/kano/grt" />
+    <source-file src="src/android/com/kano/grt/DTWWrapper.java" target-dir="src/com/kano/grt" />
+    <source-file src="src/android/com/kano/grt/HMMWrapper.java" target-dir="src/com/kano/grt" />
+    <source-file src="src/android/com/kano/grt/KMeansQuantizerWrapper.java" target-dir="src/com/kano/grt" />
+    <source-file src="src/android/com/kano/grt/Wrapper.java" target-dir="src/com/kano/grt" />
+
+    <source-file src="android-grt/jni/com/kano/grt/TimeSeriesClassificationData.java" target-dir="src/com/kano/grt" />
+    <source-file src="android-grt/jni/com/kano/grt/KMeansQuantizer.java" target-dir="src/com/kano/grt" />
+    <source-file src="android-grt/jni/com/kano/grt/DTW.java" target-dir="src/com/kano/grt" />
+    <source-file src="android-grt/jni/com/kano/grt/HMM.java" target-dir="src/com/kano/grt" />
+
+    <!-- <source-file src="android-grt/libs/arm64-v8a/libGRT.so" target-dir="libs/arm64-v8a" /> -->
+    <!-- <source-file src="android-grt/libs/armeabi/libGRT.so" target-dir="libs/armeabi" /> -->
+    <source-file src="android-grt/libs/armeabi-v7a/libGRT.so" target-dir="libs/armeabi-v7a" />
+    <!-- <source-file src="android-grt/libs/mips/libGRT.so" target-dir="libs/mips" /> -->
+    <!-- <source-file src="android-grt/libs/mips64/libGRT.so" target-dir="libs/mips64" /> -->
+    <!-- <source-file src="android-grt/libs/x86/libGRT.so" target-dir="libs/x86" /> -->
+    <!-- <source-file src="android-grt/libs/x86_64/libGRT.so" target-dir="libs/x86_64" /> -->
+  </platform>
+</plugin>

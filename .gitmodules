@@ -1,0 +1,4 @@
+[submodule "android-grt"]
+	path = android-grt
+	url = git@github.com:KanoComputing/android-grt
+	branch = master
