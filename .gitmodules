@@ -2,3 +2,6 @@
 	path = android-grt
 	url = git@github.com:KanoComputing/android-grt
 	branch = master
+[submodule "src/ios/grt"]
+	path = src/ios/grt
+	url = git@github.com:nickgillian/grt.git
