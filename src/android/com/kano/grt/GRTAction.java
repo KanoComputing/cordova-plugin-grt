@@ -20,7 +20,7 @@ public enum GRTAction {
     CREATE_HMM("createHMM"),
     HMM_TRAIN("HMM_train"),
     HMM_PREDICT("HMM_predict"),
-    HMM_GET_MAXIMUM_LIKELIHOOD("HMM_getMaximumLikelihood"),
+    HMM_GET_CLASS_LIKELIHOODS("HMM_getClassLikelihoods"),
     HMM_GET_PREDICTED_CLASS_LABEL("HMM_getPredictedClassLabel"),
     HMM_SET_HMM_TYPE("HMM_setHMMType"),
     HMM_SET_NUM_STATES("HMM_setNumStates"),
@@ -32,6 +32,7 @@ public enum GRTAction {
 
     CREATE_K_MEANS_QUANTIZER("createKMeansQuantizer"),
     KMQ_TRAIN("KMeansQuantizer_train"),
+    KMQ_SET_NUM_CLUSTERS("KMeansQuantizer_setNumClusters"),
     KMQ_QUANTIZE("KMeansQuantizer_quantize"),
     KMQ_GET_FEATURE_VECTOR("KMeansQuantizer_getFeatureVector"),
     KMQ_CLEAR("KMeansQuantizer_clear");

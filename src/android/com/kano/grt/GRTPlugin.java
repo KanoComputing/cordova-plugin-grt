@@ -2,6 +2,7 @@ package com.kano.grt;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.LOG;
 
 import java.nio.ByteBuffer;
 import java.math.BigDecimal;
@@ -42,6 +43,7 @@ public class GRTPlugin extends CordovaPlugin {
     public boolean execute(String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
         return executeTimeSeriesClassificationDataAction(action, args, callbackContext)
                 || executeDTWAction(action, args, callbackContext)
+                || executeHMMAction(action, args, callbackContext)
                 || executeKMeansQuantizerAction(action, args, callbackContext);
     }
      
@@ -152,8 +154,12 @@ public class GRTPlugin extends CordovaPlugin {
             boolean result = kMeansQuantizerWrapper.train(args.getString(0), t);
             callbackContext.success(result ? 1 : 0);
             return true;
+        } else if (GRTAction.KMQ_SET_NUM_CLUSTERS.toString().equals(action)) {
+            boolean result = kMeansQuantizerWrapper.setNumClusters(args.getString(0), args.getInt(1));
+            callbackContext.success(result ? 1 : 0);
+            return true;
         } else if (GRTAction.KMQ_QUANTIZE.toString().equals(action)) {
-            JSONArray data = args.getJSONArray(0);
+            JSONArray data = args.getJSONArray(1);
             double[] sample = new double[data.length()];
                 for (int i = 0; i < data.length(); i++) {
                     sample[i] = data.getDouble(i);
@@ -202,11 +208,14 @@ public class GRTPlugin extends CordovaPlugin {
             boolean result = hmmWrapper.predict(args.getString(0), matrix);
             callbackContext.success(result ? 1 : 0);
             return true;
-        } else if (GRTAction.HMM_GET_MAXIMUM_LIKELIHOOD.toString().equals(action)) {
-            double result = hmmWrapper.getMaximumLikelihood(args.getString(0));
-            byte[] bytes = new byte[8];
-            ByteBuffer.wrap(bytes).putDouble(result);
-            callbackContext.success(bytes);
+        } else if (GRTAction.HMM_GET_CLASS_LIKELIHOODS.toString().equals(action)) {
+            double[] result = hmmWrapper.getClassLikelihoods(args.getString(0));
+            JSONArray jsonResult = new JSONArray();
+            for (int i = 0; i < result.length; i++) {
+                LOG.w("DRFHUISJFGIUSDHFGHBDS", Double.toString(result[i]));
+                jsonResult.put(result[i]);
+            }
+            callbackContext.success(jsonResult);
             return true;
         } else if (GRTAction.HMM_GET_PREDICTED_CLASS_LABEL.toString().equals(action)) {
             int result = hmmWrapper.getPredictedClassLabel(args.getString(0));

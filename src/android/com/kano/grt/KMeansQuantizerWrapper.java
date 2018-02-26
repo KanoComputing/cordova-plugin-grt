@@ -13,6 +13,14 @@ public class KMeansQuantizerWrapper extends Wrapper<KMeansQuantizer> {
         System.loadLibrary("GRT");
     }
 
+    public boolean setNumClusters(String id, int n) {
+        KMeansQuantizer quantizer = getFromId(id);
+        if (quantizer != null) {
+            return quantizer.setNumClusters(n);
+        }
+        return false;
+    }
+
     public boolean train(String id, TimeSeriesClassificationData sample) {
         KMeansQuantizer quantizer = getFromId(id);
         if (quantizer != null) {

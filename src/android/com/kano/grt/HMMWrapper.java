@@ -1,5 +1,7 @@
 package com.kano.grt;
 
+import org.apache.cordova.LOG;
+
 import java.util.UUID;
 import java.util.Map;
 import java.util.HashMap;
@@ -36,12 +38,12 @@ public class HMMWrapper extends Wrapper<HMM> {
         return -1;
     }
 
-    public double getMaximumLikelihood(String id) {
+    public double[] getClassLikelihoods(String id) {
         HMM hmm = getFromId(id);
         if (hmm != null) {
-            return hmm.getMaximumLikelihood();
+            return hmm.getClassLikelihoods();
         }
-        return -1;
+        return new double[0];
     }
 
     public boolean setHMMType(String id, int n) {
