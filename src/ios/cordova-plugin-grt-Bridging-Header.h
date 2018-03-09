@@ -1,2 +1,2 @@
 #import <Cordova/CDVPlugin.h>
-#import "GRTWrapper.h"
+#import <ios_grt/ios_grt.h>

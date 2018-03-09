@@ -1,0 +1,6 @@
+framework module ios_grt {
+  umbrella header "ios_grt.h"
+
+  export *
+  module * { export * }
+}
