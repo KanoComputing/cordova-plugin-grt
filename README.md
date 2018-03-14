@@ -18,3 +18,10 @@ grt.createTimeSeriesClassificationData()
     });
 
 ```
+
+## iOS Development
+
+The [GRT library](https://github.com/nickgillian/grt) comes prebuilt inside `ios-grt.framework`.
+To rebuild/modify the bindings see the [ios-grt](https://github.com/KanoComputing/ios-grt) repo.
+
+It would be good to explore the possibility of building the framework from scratch on plugin add.
