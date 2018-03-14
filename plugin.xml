@@ -12,6 +12,7 @@
   <js-module src="www/grt.js" name="GRT">
     <clobbers target="window.grt" />
   </js-module>
+  <dependency id="cordova-plugin-add-swift-support" version="1.7.1"/>
   <platform name="android">
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="GRTPlugin">
@@ -38,5 +39,17 @@
     <!-- <source-file src="android-grt/libs/mips64/libGRT.so" target-dir="libs/mips64" /> -->
     <!-- <source-file src="android-grt/libs/x86/libGRT.so" target-dir="libs/x86" /> -->
     <!-- <source-file src="android-grt/libs/x86_64/libGRT.so" target-dir="libs/x86_64" /> -->
+  </platform>
+  <platform name="ios">
+      <config-file target="config.xml" parent="/*">
+          <feature name="GRTPlugin">
+              <param name="ios-package" value="GRTPlugin" />
+              <param name="onload" value="true" />
+          </feature>
+      </config-file>
+
+      <framework src="src/ios/ios_grt.framework" custom="true" embed="true" />
+      <header-file src="src/ios/cordova-plugin-grt-Bridging-Header.h" />
+      <source-file src="src/ios/GRTPlugin.swift" />
   </platform>
 </plugin>
