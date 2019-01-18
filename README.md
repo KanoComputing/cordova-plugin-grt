@@ -1,5 +1,7 @@
 # Cordova Plugin GRT
 
+🚨 Incomplete and unmaintained proof of concept. 🚨
+
 Allows you to use The Gesture Recognition Toolkit from your web pages running with cordova.
 
 ## API
